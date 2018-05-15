@@ -1,9 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.scss";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import './index.scss';
+import App from './app';
 
-const Index = () => {
-  return <div>Hello React/Preact!</div>;
-};
-
-ReactDOM.render(<Index />, document.getElementById("index"));
+ReactDOM.render((
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+), document.getElementById('root'));
