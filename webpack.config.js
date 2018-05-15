@@ -5,6 +5,11 @@ const htmlWebpackPlugin = new HtmlWebPackPlugin({
   filename: "./index.html"
 });
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const extractTextPlugin = new ExtractTextPlugin('public/style.css', {
+  allChunks: true
+});
+
 module.exports = {
   module: {
     rules: [
@@ -35,7 +40,7 @@ module.exports = {
       },
 	    {
 	        test: /\.(sass|scss)$/,
-	        loaders: ['style-loader', 'css-loader', 'sass-loader']
+          loader: ExtractTextPlugin.extract('css-loader!sass-loader')
 	    }      
     ]
   },
@@ -45,5 +50,8 @@ module.exports = {
       "react-dom": "preact-compat"
     }
   },
-  plugins: [htmlWebpackPlugin]
+  plugins: [
+    htmlWebpackPlugin,
+    extractTextPlugin
+  ]
 };
