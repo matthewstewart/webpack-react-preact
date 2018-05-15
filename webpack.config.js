@@ -32,7 +32,11 @@ module.exports = {
             }
           }
         ]
-      }
+      },
+	    {
+	        test: /\.(sass|scss)$/,
+	        loaders: ['style-loader', 'css-loader', 'sass-loader']
+	    }      
     ]
   },
   resolve: {
